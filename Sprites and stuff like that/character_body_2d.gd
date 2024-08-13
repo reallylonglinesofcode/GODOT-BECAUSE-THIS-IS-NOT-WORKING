@@ -26,8 +26,13 @@ var wasOnFloor = false
 var lastJumpQueueMsec: int
 var gravity = START_GRAVITY
 
+var hook_pos = Vector2()
+var hooked = false
+var rope_length = 500
+var current_rope_length
+
 func _ready():
-	set_meta("tag", "player")
+	current_rope_length = rope_length
 
 func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
@@ -72,8 +77,6 @@ func _physics_process(delta):
 				state = States.IDLE
 			elif Input.is_action_just_pressed("Jump"): 
 				state = States.JUMP
-		States.DEAD:
-			pass
 
 	velocity.y = lerp(prevVelocity.y, velocity.y, Y_SMOOTHING)
 	
@@ -83,7 +86,23 @@ func _physics_process(delta):
 	prevVelocity = velocity
 	
 	move_and_slide()
-	
-	
+	print(position)
+	hook()
+	if hooked:
+		gravity = START_GRAVITY
+		pass
+
 func run(direction, delta):
 	velocity.x = SPEED * direction * delta
+
+func hook():
+	$Raycast/RayCast01.target_position = to_local(get_global_mouse_position()).normalized() * 500
+	if Input.is_action_just_pressed("shoot"):
+		hook_pos = get_hooked_pos()
+		if hook_pos:
+			hooked = true
+			current_rope_length = global_position.distance_to(hook_pos)
+
+func get_hooked_pos():
+	if $Raycast/RayCast01.is_colliding:
+		return $Raycast/RayCast01.is_colliding()
