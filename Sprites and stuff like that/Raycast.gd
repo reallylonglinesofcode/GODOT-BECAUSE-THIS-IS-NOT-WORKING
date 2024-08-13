@@ -1,14 +1,10 @@
 extends Node2D
 
-@onready var player = $".."
-@onready var player_pos = player.position
-@onready var player_global_pos = player.global_position
-@onready var mouse_pos = get_mouse_global_position()
-@onready var position_to_mouse = mouse_pos - player_global_pos
-
-func _process(delta):
-	look_at(position_to_mouse.rotated(-PI/2))
-
-
+func _process(_delta):
+	$RayCast01.target_position = to_local(get_global_mouse_position()).normalized() * 500
+	
+	
+	
+	
 
 

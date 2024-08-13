@@ -20,17 +20,18 @@ rotation = -3.14159
 script = ExtResource("1_dmn0g")
 
 [node name="RayCast01" type="RayCast2D" parent="Raycast"]
-position = Vector2(0, 20)
+scale = Vector2(10, 10)
 target_position = Vector2(0, 500)
 
 [node name="Sdawagasdw-removebg-preview2" type="Sprite2D" parent="Raycast"]
+visible = false
 position = Vector2(6.00043, 173)
 rotation = 3.14159
 scale = Vector2(0.193333, 0.193333)
 texture = ExtResource("1_cj878")
 
 [node name="Sdawagasdw-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(2, 1.99998)
+position = Vector2(1, -1.19209e-07)
 scale = Vector2(0.0955556, 0.0955556)
 texture = ExtResource("1_cj878")
 
