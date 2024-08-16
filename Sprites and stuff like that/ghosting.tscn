@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwq7ms6nagagl"]
+
+[ext_resource type="Texture2D" uid="uid://e44b2bdl47wu" path="res://Sprites and stuff like that/sdawagasdw-removebg-preview.png" id="1_2wpkx"]
+[ext_resource type="Script" path="res://Sprites and stuff like that/Sprite2D.gd" id="2_ycbdb"]
+
+[node name="Ghosting" type="Sprite2D"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+show_behind_parent = true
+scale = Vector2(0.391313, 0.389425)
+texture = ExtResource("1_2wpkx")
+script = ExtResource("2_ycbdb")

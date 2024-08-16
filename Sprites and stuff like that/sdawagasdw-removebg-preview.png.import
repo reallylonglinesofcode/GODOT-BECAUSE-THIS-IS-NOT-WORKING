@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6uk74frxy4rx"
-path="res://.godot/imported/many men.png-16feafa732afcce599343ca0b9cf7bc7.ctex"
+uid="uid://e44b2bdl47wu"
+path="res://.godot/imported/sdawagasdw-removebg-preview.png-73dda687efdc68597f80b74060cb72ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://many men.png"
-dest_files=["res://.godot/imported/many men.png-16feafa732afcce599343ca0b9cf7bc7.ctex"]
+source_file="res://Sprites and stuff like that/sdawagasdw-removebg-preview.png"
+dest_files=["res://.godot/imported/sdawagasdw-removebg-preview.png-73dda687efdc68597f80b74060cb72ee.ctex"]
 
 [params]
 

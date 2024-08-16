@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmdbr3uock6gp"]
+[gd_scene load_steps=5 format=3 uid="uid://dmdbr3uock6gp"]
 
-[ext_resource type="Texture2D" uid="uid://e44b2bdl47wu" path="res://sdawagasdw-removebg-preview.png" id="1_cj878"]
-[ext_resource type="Script" path="res://Sprites and stuff like that/Raycast.gd" id="1_dmn0g"]
+[ext_resource type="Script" path="res://Sprites and stuff like that/character_body_2d.gd" id="1_aq68m"]
+[ext_resource type="Texture2D" uid="uid://e44b2bdl47wu" path="res://Sprites and stuff like that/sdawagasdw-removebg-preview.png" id="1_cj878"]
+[ext_resource type="PackedScene" uid="uid://cwq7ms6nagagl" path="res://Sprites and stuff like that/ghosting.tscn" id="2_x0sf6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pua1h"]
 radius = 15.0333
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_aq68m")
+ghost_node = ExtResource("2_x0sf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pua1h")
@@ -14,25 +17,9 @@ shape = SubResource("CircleShape2D_pua1h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7.10543e-15, 4)
 scale = Vector2(0.193359, 0.193359)
-
-[node name="Raycast" type="Node2D" parent="."]
-rotation = -3.14159
-script = ExtResource("1_dmn0g")
-
-[node name="RayCast01" type="RayCast2D" parent="Raycast"]
-scale = Vector2(10, 10)
-target_position = Vector2(0, 500)
-
-[node name="Sdawagasdw-removebg-preview2" type="Sprite2D" parent="Raycast"]
-visible = false
-position = Vector2(6.00043, 173)
-rotation = 3.14159
-scale = Vector2(0.193333, 0.193333)
 texture = ExtResource("1_cj878")
 
-[node name="Sdawagasdw-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(1, -1.19209e-07)
-scale = Vector2(0.0955556, 0.0955556)
-texture = ExtResource("1_cj878")
+[node name="Ghost_timer" type="Timer" parent="."]
+wait_time = 0.15
 
-[connection signal="ready" from="Raycast/RayCast01" to="Raycast" method="_on_ray_cast_01_ready"]
+[connection signal="timeout" from="Ghost_timer" to="." method="_on_ghost_timer_timeout"]

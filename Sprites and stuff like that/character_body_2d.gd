@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var Y_SMOOTHING = 0.8
 @export var AIR_X_SMOOTHING = 0.1
 @export var MAX_FALL_SPEED = 25000
+@export var ghost_node : PackedScene
+@onready var ghost_timer = $Ghost_timer
 
 enum States {
 	IDLE,
@@ -25,14 +27,6 @@ var lastFloorMsec = 0
 var wasOnFloor = false
 var lastJumpQueueMsec: int
 var gravity = START_GRAVITY
-
-var hook_pos = Vector2()
-var hooked = false
-var rope_length = 500
-var current_rope_length
-
-func _ready():
-	current_rope_length = rope_length
 
 func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
@@ -86,23 +80,26 @@ func _physics_process(delta):
 	prevVelocity = velocity
 	
 	move_and_slide()
-	print(position)
-	hook()
-	if hooked:
-		gravity = START_GRAVITY
-		pass
 
 func run(direction, delta):
 	velocity.x = SPEED * direction * delta
 
-func hook():
-	$Raycast/RayCast01.target_position = to_local(get_global_mouse_position()).normalized() * 500
-	if Input.is_action_just_pressed("shoot"):
-		hook_pos = get_hooked_pos()
-		if hook_pos:
-			hooked = true
-			current_rope_length = global_position.distance_to(hook_pos)
+func add_ghost():
+	var ghost = ghost_node.instantiate()
+	ghost.set_property(position, $Sprite2D.scale)
+	get_tree().current_scene.add_child(ghost)
 
-func get_hooked_pos():
-	if $Raycast/RayCast01.is_colliding:
-		return $Raycast/RayCast01.is_colliding()
+func _on_ghost_timer_timeout():
+	add_ghost()
+
+func dash():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", position + velocity * 1.2, 0.45)
+	
+	await tween.finished
+	ghost_timer.stop()
+
+func _input(event):
+	if event.is_action_pressed("dash"):
+		dash()
+	

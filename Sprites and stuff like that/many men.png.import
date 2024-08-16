@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brnnasglyjluc"
-path="res://.godot/imported/Untitled.png-30da513a925d9064453decddf41ecbd4.ctex"
+uid="uid://b6uk74frxy4rx"
+path="res://.godot/imported/many men.png-4952c380e64ed8e612c653060b380714.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Untitled.png"
-dest_files=["res://.godot/imported/Untitled.png-30da513a925d9064453decddf41ecbd4.ctex"]
+source_file="res://Sprites and stuff like that/many men.png"
+dest_files=["res://.godot/imported/many men.png-4952c380e64ed8e612c653060b380714.ctex"]
 
 [params]
 

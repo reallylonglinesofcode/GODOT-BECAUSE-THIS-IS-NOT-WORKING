@@ -1,28 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cejay3xm34rco"]
+[gd_scene load_steps=6 format=3 uid="uid://cejay3xm34rco"]
 
 [ext_resource type="PackedScene" uid="uid://dmdbr3uock6gp" path="res://Sprites and stuff like that/character_body_2d.tscn" id="2_bbafe"]
-[ext_resource type="Script" path="res://Sprites and stuff like that/character_body_2d.gd" id="3_ct6g1"]
-[ext_resource type="Texture2D" uid="uid://brnnasglyjluc" path="res://Untitled.png" id="3_fcibq"]
+[ext_resource type="Texture2D" uid="uid://brnnasglyjluc" path="res://Sprites and stuff like that/Untitled.png" id="3_fcibq"]
 [ext_resource type="Script" path="res://Sprites and stuff like that/Camera2D.gd" id="3_lm3r8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dodhl"]
 texture = ExtResource("3_fcibq")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_445ub"]
@@ -35,7 +26,6 @@ sources/1 = SubResource("TileSetAtlasSource_dodhl")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_bbafe")]
 z_index = 1
 position = Vector2(0, -32)
-script = ExtResource("3_ct6g1")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(0, 32)
