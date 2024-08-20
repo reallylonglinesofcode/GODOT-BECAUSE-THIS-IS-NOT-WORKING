@@ -11,9 +11,13 @@ extends CharacterBody2D
 @export var Y_SMOOTHING = 0.8
 @export var AIR_X_SMOOTHING = 0.1
 @export var MAX_FALL_SPEED = 25000
-@export var ghost_node : PackedScene
-@onready var ghost_timer = $Ghost_timer
-
+@onready var ray = $RayCast2D
+var hook_pos = Vector2()
+var hooked = false
+var rope_length = 500
+var current_rope_length
+var motion = Vector2()
+@onready var swingpoint = get_parent()
 enum States {
 	IDLE,
 	RUN,JUMP,
@@ -28,7 +32,16 @@ var wasOnFloor = false
 var lastJumpQueueMsec: int
 var gravity = START_GRAVITY
 
+func _ready():
+	set_meta("tag", "player")
+	current_rope_length = rope_length
+
 func _physics_process(delta):
+	if hooked:
+		swing()
+		return
+	
+		
 	var direction = Input.get_axis("Left", "Right")
 	
 	if is_on_floor():
@@ -71,7 +84,9 @@ func _physics_process(delta):
 				state = States.IDLE
 			elif Input.is_action_just_pressed("Jump"): 
 				state = States.JUMP
-
+		States.DEAD:
+			pass
+	
 	velocity.y = lerp(prevVelocity.y, velocity.y, Y_SMOOTHING)
 	
 	velocity.y = min(velocity.y, MAX_FALL_SPEED * delta)
@@ -80,26 +95,47 @@ func _physics_process(delta):
 	prevVelocity = velocity
 	
 	move_and_slide()
-
+	#print(motion)
+	hook()
+	if Input.is_action_just_pressed("shoot"):
+		if ray.is_colliding():
+			hook_pos = ray.get_collision_point()
+			swingpoint.global_position = hook_pos
+			hooked = true
+			
+	#if hooked:
+		#gravity = START_GRAVITY
+		#swing(delta)
+		#motion *= 0.96
+		#motion = move_and_slide()
+func swing():
+	swingpoint.rotation_degrees+=1
+	
 func run(direction, delta):
 	velocity.x = SPEED * direction * delta
+#
+func hook():
+	ray.target_position = to_local(get_global_mouse_position()).normalized() * 500
+	#if Input.is_action_just_pressed("shoot"):
+		#hook_pos = get_hooked_pos()
+		#if hook_pos:
+			#hooked = true
+			#current_rope_length = global_position.distance_to(hook_pos)
 
-func add_ghost():
-	var ghost = ghost_node.instantiate()
-	ghost.set_property(position, $Sprite2D.scale)
-	get_tree().current_scene.add_child(ghost)
+#func get_hooked_pos():
+	#if ray.is_colliding:
+		#
+		#return ray.get_collision_point()
 
-func _on_ghost_timer_timeout():
-	add_ghost()
-
-func dash():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", position + velocity * 1.2, 0.45)
-	
-	await tween.finished
-	ghost_timer.stop()
-
-func _input(event):
-	if event.is_action_pressed("dash"):
-		dash()
-	
+#func swing(delta):
+	#var radius = global_position - hook_pos
+	#if motion.length() < 0.01 or radius.length() < 10: 
+		#return
+	#var angle = acos(radius.dot(motion) / (radius.length * SPEED.length()))
+	#var rad_vel = cos(angle) * motion.length()
+	#SPEED += radius.normalized * -rad_vel
+	#
+	#if global_position.distance_to(hook_pos) > current_rope_length:
+		#global_position = hook_pos + radius.normalized() * current_rope_length
+	#
+	#motion += (hook_pos - global_position).normalized() * 15000 * delta

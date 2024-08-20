@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmdbr3uock6gp"]
+[gd_scene load_steps=4 format=3 uid="uid://dmdbr3uock6gp"]
 
 [ext_resource type="Script" path="res://Sprites and stuff like that/character_body_2d.gd" id="1_aq68m"]
 [ext_resource type="Texture2D" uid="uid://e44b2bdl47wu" path="res://Sprites and stuff like that/sdawagasdw-removebg-preview.png" id="1_cj878"]
-[ext_resource type="PackedScene" uid="uid://cwq7ms6nagagl" path="res://Sprites and stuff like that/ghosting.tscn" id="2_x0sf6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pua1h"]
 radius = 15.0333
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="RigidBody2D"]
 script = ExtResource("1_aq68m")
-ghost_node = ExtResource("2_x0sf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pua1h")
@@ -19,7 +17,5 @@ position = Vector2(-7.10543e-15, 4)
 scale = Vector2(0.193359, 0.193359)
 texture = ExtResource("1_cj878")
 
-[node name="Ghost_timer" type="Timer" parent="."]
-wait_time = 0.15
-
-[connection signal="timeout" from="Ghost_timer" to="." method="_on_ghost_timer_timeout"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 500)
