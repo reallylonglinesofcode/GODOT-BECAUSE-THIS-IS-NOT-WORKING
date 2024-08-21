@@ -3,22 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://e44b2bdl47wu" path="res://Sprites and stuff like that/sdawagasdw-removebg-preview.png" id="1_7aj2l"]
 [ext_resource type="Script" path="res://newplayer.gd" id="1_dkjrj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aloju"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqybc"]
 
 [node name="Player" type="RigidBody2D"]
 script = ExtResource("1_dkjrj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.055, 0.055)
 texture = ExtResource("1_7aj2l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_aloju")
+shape = SubResource("CircleShape2D_bqybc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-
-[node name="Line2D" type="Line2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="."]
-
-[node name="PinJoint2D" type="PinJoint2D" parent="."]

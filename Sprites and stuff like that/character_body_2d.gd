@@ -103,11 +103,6 @@ func _physics_process(delta):
 			swingpoint.global_position = hook_pos
 			hooked = true
 			
-	#if hooked:
-		#gravity = START_GRAVITY
-		#swing(delta)
-		#motion *= 0.96
-		#motion = move_and_slide()
 func swing():
 	swingpoint.rotation_degrees+=1
 	
@@ -116,26 +111,3 @@ func run(direction, delta):
 #
 func hook():
 	ray.target_position = to_local(get_global_mouse_position()).normalized() * 500
-	#if Input.is_action_just_pressed("shoot"):
-		#hook_pos = get_hooked_pos()
-		#if hook_pos:
-			#hooked = true
-			#current_rope_length = global_position.distance_to(hook_pos)
-
-#func get_hooked_pos():
-	#if ray.is_colliding:
-		#
-		#return ray.get_collision_point()
-
-#func swing(delta):
-	#var radius = global_position - hook_pos
-	#if motion.length() < 0.01 or radius.length() < 10: 
-		#return
-	#var angle = acos(radius.dot(motion) / (radius.length * SPEED.length()))
-	#var rad_vel = cos(angle) * motion.length()
-	#SPEED += radius.normalized * -rad_vel
-	#
-	#if global_position.distance_to(hook_pos) > current_rope_length:
-		#global_position = hook_pos + radius.normalized() * current_rope_length
-	#
-	#motion += (hook_pos - global_position).normalized() * 15000 * delta
