@@ -1,7 +1,7 @@
 extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var speed = 30
-#@export var hook : StaticBody2D
+@export var hook : StaticBody2D
 @export var pinjoint : PinJoint2D
 var hooked = false
 
@@ -16,10 +16,11 @@ func _process(delta: float) -> void:
 			var collider = ray_cast_2d.get_collider()
 			if collider.is_in_group("Hookable"):
 				print("hooked")
+				hook.global_position = ray_cast_2d.get_collision_point()
 				pinjoint.global_position = ray_cast_2d.get_collision_point()
-				pinjoint.node_b = get_path_to(collider)
+				pinjoint.node_b = get_path_to(hook)
 				
-	elif Input.is_action_just_pressed("shoot") and hooked:
+	elif Input.is_action_just_released("shoot") and hooked:
 		hooked = false
 		pinjoint.node_b = NodePath("")
 	print(get_colliding_bodies())
