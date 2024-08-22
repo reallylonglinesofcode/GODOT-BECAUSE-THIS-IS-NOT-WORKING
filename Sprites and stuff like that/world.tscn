@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dgh5bp0mcvs60" path="res://icon.png" id="3_vm3vb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxhbu"]
-size = Vector2(245, 70.5)
+size = Vector2(244.5, 83.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dodhl"]
 texture = ExtResource("3_fcibq")
@@ -30,6 +30,10 @@ sources/1 = SubResource("TileSetAtlasSource_dodhl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-18, -334.5)
+shape = SubResource("RectangleShape2D_gxhbu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-933, -290)
 shape = SubResource("RectangleShape2D_gxhbu")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["Hookable"]]
