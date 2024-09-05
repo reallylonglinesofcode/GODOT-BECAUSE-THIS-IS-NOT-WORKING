@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crgcfo4degy6l"
-path="res://.godot/imported/icon.svg-4d83eec8ac029b79d73ffd308540f27f.ctex"
+uid="uid://dwk3yoyjpy8fs"
+path="res://.godot/imported/New Piskel-1.png (20).png-d13e788da810fd8bb471f50f9a8f099c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites and stuff like that/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-4d83eec8ac029b79d73ffd308540f27f.ctex"]
+source_file="res://Sprites and stuff like that/New Piskel-1.png (20).png"
+dest_files=["res://.godot/imported/New Piskel-1.png (20).png-d13e788da810fd8bb471f50f9a8f099c.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

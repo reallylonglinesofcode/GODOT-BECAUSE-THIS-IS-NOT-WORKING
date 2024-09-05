@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqybc"]
 
 [node name="Player" type="RigidBody2D"]
+scale = Vector2(2.11626, 2.11626)
 script = ExtResource("1_dkjrj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
