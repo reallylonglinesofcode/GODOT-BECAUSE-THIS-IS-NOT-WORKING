@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://biw222ms8yqvg"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_4qv2i"]
+[ext_resource type="Texture2D" uid="uid://dfy14kfvbi52g" path="res://pixel_art_background_practice2_by_raisinbreadx_de3vi9c-pre.jpg" id="1_6x3ic"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qv2i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6x3ic")
+
+[node name="start_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -97.0
+offset_right = 142.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="Quit button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = 37.0
+offset_right = 139.5
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="tout button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 247.0
+offset_top = 229.0
+offset_right = 526.0
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Toutiral"
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Quit button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="tout button" to="." method="_on_start_button_pressed"]

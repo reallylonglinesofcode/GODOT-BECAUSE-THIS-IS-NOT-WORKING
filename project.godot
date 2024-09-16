@@ -11,12 +11,8 @@ config_version=5
 [application]
 
 config/name="Ascendancy Basic"
-run/main_scene="res://Sprites and stuff like that/world.tscn"
+run/main_scene="res://control.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-
-[display]
-
-mouse_cursor/custom_image="res://marker.png"
 
 [input]
 
