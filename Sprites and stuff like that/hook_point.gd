@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-
+#this is for my animation
 @export var click_animation_name: String = "click"
 @export var idle_animation_name: String = "idle"
 
@@ -9,7 +9,8 @@ var mouse_is_pressed: bool = false
 
 func _ready():
 	animation_player.play(idle_animation_name)
-
+#if the mouse button is clicked it plays and if is not clicked, it does not play, you can also see if attempt is a  
+#fail because you can see the hook animation play but not the rope animation
 func _input(event):
 	# Check for mouse button pressed event
 	if event is InputEventMouseButton:

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#these are all my variables that I used in my movement code
 @export var SPEED = 35000
 @export var JUMP_VELOCITY = -50000
 @export var START_GRAVITY = 1700
@@ -24,7 +24,7 @@ enum States {
 	AIR,
 	DEAD,
 }
-
+#this are the sates
 @onready var state: States = States.AIR
 var prevVelocity = Vector2.ZERO
 var lastFloorMsec = 0
@@ -36,6 +36,7 @@ func _ready():
 	set_meta("tag", "player")
 	current_rope_length = rope_length
 
+#this is the general movement code, it is not being used as I have used a different set up for movement
 func _physics_process(delta):
 	if hooked:
 		swing()
