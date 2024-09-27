@@ -38,7 +38,7 @@ animations = [{
 }]
 
 [node name="World" type="Node2D"]
-position = Vector2(31, -4106)
+position = Vector2(-258, -4982)
 metadata/_edit_horizontal_guides_ = [-659.0]
 
 [node name="Layer0" parent="." instance=ExtResource("1_s2vej")]
@@ -76,7 +76,6 @@ script = ExtResource("4_oy0y7")
 node_a = NodePath("..")
 
 [node name="Line2d" type="Line2D" parent="Player/Pinjoint1"]
-visible = false
 z_as_relative = false
 texture_repeat = 2
 position = Vector2(0, 492)
